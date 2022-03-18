@@ -2,7 +2,9 @@
 title: "Introduction to R Programming"
 author: "Usman Tariq"
 date: "March 18, 2022"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 
@@ -42,9 +44,19 @@ print(my_var)
 ```{r }
 a <- 1:19
 a
+```
+
+
+```{r }
 b <- subset(a,a%%2==0)
 b
+```
+
+```{r }
 dim(b)
+```
+
+```{r }
 dim(b) <- c(3,3)
 b
 ```
@@ -52,11 +64,19 @@ b
 
 ```{r }
 names(b)
+```
 
+```{r }
 dimnames(b)
+```
 
+```{r }
 dimnames(b) <- list(c("R-1","R-2","R-3"),c("C-1","C-2","C-3"))
 b
+```
+
+```{r }
+
 ```
 
 
@@ -119,6 +139,7 @@ data_base <- data.frame(CustomerName = c("Alicia","Nancy","Fernando","Louis","Di
                         CustomerID = c("001", "002", "003","004","005"), 
                         hasAccount = c(F, T, T, T, F), 
                         totalBalance = c(NA, 10000, 0, 2000, NA))
+data_base
 ```
 
 
@@ -186,13 +207,17 @@ for (nm in u) {
     print(paste(nm, "is not prime."))
   }
 }
-primes
 ```
-
 
 ```{r }
 primes
+```
+
+```{r }
 length(primes)
+```
+
+```{r }
 var_p <- 1
 while(var_p <= length(primes)){
   if (var_p == 10){
@@ -203,17 +228,6 @@ while(var_p <= length(primes)){
   }
 }
 ```
-
-
-```{r }
-
-```
-
-
-```{r }
-
-```
-
 
 ```{r }
 #### End solution ####
@@ -234,9 +248,11 @@ mat_1 <- matrix(11:19, 3, 3)
 mat_1
 ```
 
+```{r }
+print("Display the Matrix Element in Row Sequence:")
+```
 
 ```{r }
-print("Display the Matrix Element in Row Sequence.")
 for (i in 1:length(mat_1[1,])) {
   for (j in 1:length(mat_1[,1])) {
     print(paste("Element at position (",i, ",",j,"), is: ",mat_1[i,j]))
@@ -244,24 +260,16 @@ for (i in 1:length(mat_1[1,])) {
 }
 ```
 
-
 ```{r }
 print("Display the Matrix Element in Column Sequence.")
+```
+
+```{r }
 for (a in 1:length(mat_1[,1])) {
   for (b in 1:length(mat_1[1,])) {
     print(paste("Element at position (",b, ",",a,"), is: ",mat_1[b,a]))
   }
 }
-```
-
-
-```{r }
-
-```
-
-
-```{r }
-
 ```
 
 
@@ -286,7 +294,7 @@ for (a in 1:length(mat_1[,1])) {
 
 
 ```{r }
-GCD <- function(a,b){
+gcd_func <- function(a,b){
   if(a < b){
     sm <- a
   }
@@ -305,24 +313,18 @@ GCD <- function(a,b){
 
 
 ```{r }
-num_1 <- as.integer(readline(prompt = "Enter 1st integer: "))
-num_2 <- as.integer(readline(prompt = "Enter 2nd integer: "))
+num_1 <- 121 #as.integer(readline(prompt = "Enter 1st integer: "))
+num_2 <- 11 #as.integer(readline(prompt = "Enter 2nd integer: "))
 ```
 
 
 ```{r }
-answer <- GCD(num_1, num_2)
+answer <- gcd_func(num_1, num_2)
+```
+
+
+```{r }
 print(answer)
-```
-
-
-```{r }
-
-```
-
-
-```{r }
-
 ```
 
 
@@ -344,8 +346,8 @@ print(answer)
 
 
 ```{r }
-a <- as.integer(readline(prompt = "Enter 1st integer: "))
-b <- as.integer(readline(prompt = "Enter 2nd integer: "))
+a <- 11 #as.integer(readline(prompt = "Enter 1st integer: "))
+b <- 00 #as.integer(readline(prompt = "Enter 2nd integer: "))
 ```
 
 
@@ -363,11 +365,6 @@ bool_check <- function(a, b){
 
 ```{r }
 bool_check(a,b)
-```
-
-
-```{r }
-
 ```
 
 
@@ -400,22 +397,25 @@ bool_check(a,b)
 
 ```{r }
 matrix_1 <- matrix(1:6, 2, 3)
+matrix_1
 ```
 
 
 ```{r }
 matrix_2 <- matrix(rep(floor(runif(6, min = 1, max = 50))),3,2)
+matrix_2
 ```
 
 
 ```{r }
-matrix_1; matrix_2
 dim(matrix_1); dim(matrix_2)
 ```
 
 
 ```{r }
-matrix_1 * matrix_2
+#matrix_1 * matrix_2
+# Element to Element multiplication is not possible
+# because, the order of both matrices are different.
 ```
 
 
@@ -426,6 +426,7 @@ multi_matrix
 
 ```{r }
 my_mat <- matrix(floor(runif(4, min = 1, max = 25)),2,2)
+my_mat
 ```
 
 
@@ -434,7 +435,6 @@ find_det <- function(passed_matrix){
   result <- det(passed_matrix)
   print(result)
 }
-my_mat
 find_det(my_mat)
 ```
 
@@ -460,31 +460,46 @@ find_det(my_mat)
 ```{r }
 curr_date <- Sys.Date()
 curr_date
+```
+
+```{r }
 curr_time <- Sys.time()
 curr_time
 ```
-
-
 ```{r }
 d_obj <- as.POSIXlt(curr_date)
 d_obj
-names(unclass(d_obj))
-t_obj <- as.POSIXlt(curr_time)
-t_obj
-names(unclass(t_obj))
 ```
 
+```{r }
+names(unclass(d_obj))
+```
+
+```{r }
+t_obj <- as.POSIXlt(curr_time)
+t_obj
+```
+
+```{r }
+names(unclass(t_obj))
+```
 
 ```{r }
 wd1 = d_obj$wday
 print(paste("Week Day of Current Date: ", wd1))
+```
 
+```{r }
 wd2 = t_obj$wday
 print(paste("Week Day of Current Time: ", wd2))
+```
 
+```{r }
 yy1 = d_obj$year
 print(paste("Year of Current Date: ", yy1))
+```
 
+```{r }
 yy2 = t_obj$year
 print(paste("Year of Current Date: ", yy2))
 ```
@@ -493,22 +508,31 @@ print(paste("Year of Current Date: ", yy2))
 ```{r }
 yd1 = d_obj$yday
 print(paste("Day of the Year of Current Date: ", yd1))
+```
 
+```{r }
 yd2 = t_obj$yday
 print(paste("Day of the Year of Current Time: ", yd2))
 ```
 
-
 ```{r }
 hd1 = d_obj$hour
 print(paste("Hour of Current Date: ", hd1))
+```
 
+```{r }
 hd2 = t_obj$hour
 print(paste("Hour of Current Time: ", hd2))
+```
 
+
+```{r }
 sd1 = d_obj$sec
 print(paste("Second of Current Date: ", sd1))
+```
 
+
+```{r }
 sd2 = t_obj$sec
 print(paste("Second of Current Time: ", sd2))
 ```
@@ -530,49 +554,82 @@ print(paste("Second of Current Time: ", sd2))
 
 
 ```{r }
-date_1 <- "2022-03-18 22:16:58"
+date_1 <- "2022-03-19 00:57:03"
 date_1
+```
+
+```{r }
 d1 = as.POSIXct(date_1, tz = "GMT")
 d1
+```
+
+```{r }
 date_2 <- Sys.time()
 date_2
+```
+
+```{r }
 d2 = as.POSIXct(date_2)
 d2
+```
+
+```{r }
 time_diff <- abs(d2 - d1)
 time_diff
 ```
 
 
 ```{r }
-### Another Method ###
+                ### Another Method ###
 
 gmt <- lubridate::with_tz(Sys.time(), "GMT")
-my_time <- Sys.time()
-gmt_p = as.POSIXlt(gmt)
-my_time_p = as.POSIXlt(my_time)
-gmt_p
-my_time_p
-gmt_p$hour
-my_time_p$hour
+gmt
+```
 
-time_difference = abs(gmt_p$hour - my_time_p$hour)
+
+```{r }
+gmt_p = as.POSIXlt(gmt)
+gmt_p
+```
+
+
+```{r }
+my_current_time <- Sys.time()
+my_current_time
+```
+
+
+```{r }
+my_current_time_p = as.POSIXlt(my_current_time)
+my_current_time_p
+```
+
+```{r }
+gmt_p$hour
+```
+
+```{r }
+my_current_time_p$hour
+```
+
+```{r }
+if (my_current_time_p$hour < 12){
+  time_difference = abs(my_current_time_p$hour + 24 - gmt_p$hour)
+} else {
+  time_difference = abs(gmt_p$hour - my_current_time_p$hour)
+}
+
 print(paste("Time Difference between GMT and my_time_zone(UTC) is: ", time_difference, "hours."))
 ```
 
+```{r }
+
+```
 
 ```{r }
 
 ```
 
-
-```{r }
-
-```
-
-
-```{r }
-
-```
 
 
 ```{r }
@@ -599,50 +656,98 @@ numbers <- seq(100,150)
 numbers
 ```
 
-
 ```{r }
 lapply(numbers, mean)
+```
+
+```{r }
 sapply(numbers, mean)
+```
 
-lapply(numbers, runif)
-sapply(numbers, runif)
+```{r }
+#lapply(numbers, runif)
+```
 
+```{r }
+#sapply(numbers, runif)
+```
+
+```{r }
 lapply(numbers, sd)
+```
 
+```{r }
 dim(numbers) <- c(1, length(numbers))
+```
 
+```{r }
 apply(numbers, 1, sum)
-apply(numbers, 2, sum)
+```
 
+```{r }
+apply(numbers, 2, sum)
+```
+
+
+```{r }
 apply(numbers, 1, mean)
 apply(numbers, 1, sd)
 apply(numbers, 1, quantile)
 apply(numbers, 1, quantile, probs=c(0.25, 0.50))
 ```
+```{r }
+apply(numbers, 1, sd)
+apply(numbers, 1, quantile)
+apply(numbers, 1, quantile, probs=c(0.25, 0.50))
+```
+```{r }
+apply(numbers, 1, quantile)
+apply(numbers, 1, quantile, probs=c(0.25, 0.50))
+```
 
+```{r }
+apply(numbers, 1, quantile, probs=c(0.25, 0.50))
+```
 
 ```{r }
 rowMeans(numbers)
-colMeans(numbers)
-rowSums(numbers)
 ```
 
+```{r }
+colMeans(numbers)
+```
 
 ```{r }
+rowSums(numbers)
+```
+```{r }
 mean(numbers[25:50])
-class(numbers)
+```
 
+```{r }
+class(numbers)
+```
+
+```{r }
 a <- numbers[25:50]
 a
+```
+
+```{r }
 b <- gl(26, 1)
 b
+```
+
+```{r }
 tapply(a, b, mean)
 ```
 
-
 ```{r }
 tapply(numbers[1:3], gl(3,1), sum)
+```
 
+
+```{r }
 tapply(numbers[1:3], gl(3,1), sum, simplify = FALSE)
 ```
 
@@ -665,32 +770,26 @@ tapply(numbers[1:3], gl(3,1), sum, simplify = FALSE)
 ```{r }
 mat_4 = matrix(floor(runif(4, 5, 50)), 4, 4)
 mat_4
+```
 
+
+```{r }
 apply(mat_4, 1, mean)
+```
+
+
+```{r }
 apply(mat_4, 2, mean)
+```
 
+
+```{r }
 rowMeans(mat_4)
+```
+
+
+```{r }
 colMeans(mat_4)
-```
-
-
-```{r }
-
-```
-
-
-```{r }
-
-```
-
-
-```{r }
-
-```
-
-
-```{r }
-
 ```
 
 
